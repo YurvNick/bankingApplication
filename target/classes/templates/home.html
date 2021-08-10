@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Main Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"></head>
+<body>
+
+<div th:insert="blocks/header :: header"></div>
+<div class="form-group col-2">
+    <form action="/credits_offers/create" method="get">
+        <button class="btn btn-outline-primary" type="submit">Создать кредитное предложение </button>
+    </form>
+</div>
+<div class="form-group col-2">
+    <form action="/clients/create">
+        <button class="btn btn-outline-primary" type="submit">Добавить нового клиента</button>
+    </form>
+</div>
+<div class="form-group col-2">
+    <form action="/credits/create">
+        <button class="btn btn-outline-primary" type="submit">Создать кредит</button>
+    </form>
+</div>
+<div class="form-group col-2">
+    <form action="/banks/create">
+        <button class="btn btn-outline-primary" type="submit">Создать банк</button>
+    </form>
+</div>
+
+</body>
+</html>

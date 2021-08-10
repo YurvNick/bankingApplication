@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Изменить параметры кредита</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"></head>
+</head>
+<body>
+<div th:insert="blocks/header :: header"></div>
+<H4 style="margin-left:32px;"> Кредит: </H4>
+<H4 th:text="${credit.name}" style="margin-left:32px;"> </H4>
+<form method="post" style="margin-left:32px;">
+    <div class="form-group row">
+        <input type="hidden" id="uuid" name="uuid"  th:value="${credit.uuid}" required >
+        <div class="form-group col-3">
+            <label for="name">Тип кредита: </label>
+            <input type="text" class="form-control" id="name" name="name" pattern="[0-9]*" minlength="5" maxlength="50" th:value="${credit.name}" required >
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="form-group col-3">
+            <label for="limit">Кредитный лимит: </label>
+            <input type="number" class="form-control" id="limit" name="limit" title="Введите от 1₽ до 9 999 999₽" pattern="[0-9]*" min="1" max="999999999" th:value="${(credit.limit / 100)}" required >
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="form-group col-3">
+            <label for="interest">Процентная ставка: </label>
+            <input type="number" class="form-control" id="interest" name="interest" min="0" max="99.99" step="0.01" pattern="^\d+(?:[\.,]\d+)?$" th:value="${(credit.interestRate * 100)}" required >
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="form-group col-3">
+            <label>Банк: </label>
+            <select class="form-control" id="bank" name="bank" th >
+                <option th:each="bank : ${banks}"
+                        th:value="${bank.uuid}"
+                        th:utext="${bank.name}"/>
+    </select>
+    </div>
+    </div>
+    <div class="form-group row" style="margin-top:16px;">
+        <div class="form-group col-3">
+            <button type="submit" class="btn btn-primary">Обновить</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>

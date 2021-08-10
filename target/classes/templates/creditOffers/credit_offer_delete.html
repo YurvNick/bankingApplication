@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Main Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"></head>
+</head>
+<body>
+<div th:insert="blocks/header :: header"></div>
+<form style="margin-left:32px;">
+    <h5>Вы действительно хотите удалить кредитное предложение?</h5>
+    <table class="table table-sm" style="width: -webkit-fill-available;">
+        <thead>
+        <tr>
+            <th scope="col">Полное имя клиента</th>
+            <th scope="col">Кредит</th>
+            <th scope="col">Сумма</th>
+            <th scope="col">Срок</th>
+            <th scope="col">Процентная ставка %</th>
+            <th scope="col">Общая сумма переплат</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td th:text="${creditOffer.client.fullName}"></td>
+            <td th:text="${creditOffer.credit.name}"></td>
+            <td th:text="${(creditOffer.amount / 100)}"></td>
+            <td th:text="${(creditOffer.creditTerm)}"> </td>
+            <td th:text="${(creditOffer.credit.interestRate * 100)}"></td>
+            <td th:text="${(creditOffer.interestTotal / 100)}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="form-group row" style="margin-top:16px; margin-left:32px;">
+        <div class="col-sm-auto">
+            <button type="submit" formmethod="get" formaction="/credits_offers" class="btn btn-success">Отменить удаление</button>
+        </div>
+        <div class="col-sm-auto">
+            <button type="submit" formmethod="post" th:action="@{/credits_offers/${creditOffer.uuid}/delete}" class="btn btn-danger">Удалить кредитное предложение</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>
