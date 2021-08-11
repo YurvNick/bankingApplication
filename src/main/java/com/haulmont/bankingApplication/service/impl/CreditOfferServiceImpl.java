@@ -59,14 +59,6 @@ public class CreditOfferServiceImpl implements CrudEntityService<CreditOffer> {
             interestTotal += interestAmount;
         }
         creditOffer.setInterestTotal(interestTotal);
-//        don't work
-//        System.out.println(paymentList);
-//        Collections.sort(paymentList, new Comparator<Payment>() {
-//            public int compare(Payment o1, Payment o2) {
-//                return (int) (o1.getInterestAmount() - o2.getInterestAmount());
-//            }
-//        });
-//        System.out.println(paymentList);
         creditOffer.setPaymentList(paymentList);
     }
 }

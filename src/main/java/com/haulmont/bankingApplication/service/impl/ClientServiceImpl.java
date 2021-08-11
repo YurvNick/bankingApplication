@@ -11,6 +11,7 @@ import java.util.UUID;
 
 @Service
 public class ClientServiceImpl implements CrudEntityService<Client> {
+
     private final ClientRepository clientRepository;
 
     public ClientServiceImpl(ClientRepository clientRepository) {
