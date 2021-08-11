@@ -26,7 +26,7 @@
             <select class="form-control" name="credit_uuid" id="credit_uuid">
                 <option th:each="credit : ${credits}"
                         th:value="${credit.uuid}"
-                        th:utext="${credit.name}"/>
+                        th:utext="${credit.name} + ' от банка ' + ${credit.bank.name} + ' с процентной ставкой ' + ${#numbers.formatDecimal(credit.interestRate * 100, 0, 0)} + '%'"/>
         </select>
     </div>
     </div>
