@@ -21,7 +21,7 @@
     <tr th:each="credit : ${bank.credit}">
         <td th:text="${credit.name}"></td>
         <td th:text="${(credit.limit / 100)}"></td>
-        <td th:text="${(credit.interestRate * 100)} + '%'"></td>
+        <td th:text="${#numbers.formatDecimal(credit.interestRate * 100, 0, 0)} + '%'"></td>
     </tr>
     </tbody>
 </table>
